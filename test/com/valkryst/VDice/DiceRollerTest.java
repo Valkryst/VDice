@@ -52,14 +52,14 @@ public class DiceRollerTest {
     @Test
     public void testAddDie_twoParams_withIsNegativeSetToTrue() {
         final int sides = ThreadLocalRandom.current().nextInt(Integer.MAX_VALUE);
-        roller.addDie(sides, true);
+        roller.addDie(-sides);
         Assert.assertEquals(roller.getMinimumRoll(), -1);
     }
 
     @Test
     public void testAddDie_twoParams_withIsNegativeSetToFalse() {
         final int sides = ThreadLocalRandom.current().nextInt(Integer.MAX_VALUE);
-        roller.addDie(sides, false);
+        roller.addDie(sides);
         Assert.assertEquals(roller.getMinimumRoll(), 1);
     }
 
@@ -71,53 +71,40 @@ public class DiceRollerTest {
     }
 
     @Test
-    public void testAddDice_threeParams_withIsNegativeSetToTrue() {
-        final int sides = ThreadLocalRandom.current().nextInt(Integer.MAX_VALUE);
-        roller.addDice(sides, 1000, true);
-        Assert.assertEquals(roller.getMinimumRoll(), -1000);
-    }
-
-    @Test
-    public void testAddDice_threeParams_withIsNegativeSetToFalse() {
-        roller.addDice(1, 1000, false);
-        Assert.assertEquals(roller.getMinimumRoll(), 1000);
-    }
-
-    @Test
     public void testGetMinimumRoll_withOnlyPositiveDice() {
-        roller.addDice(1, 1000, false);
+        roller.addDice(1, 1000);
         Assert.assertEquals(roller.getMinimumRoll(), 1000);
     }
 
     @Test
     public void testGetMinimumRoll_withOnlyNegativeDice() {
-        roller.addDice(1, 1000, true);
+        roller.addDice(-1, 1000);
         Assert.assertEquals(roller.getMinimumRoll(), -1000);
     }
 
     @Test
     public void testGetMinimumRoll_withMixedDice() {
-        roller.addDice(1, 1000, true);
-        roller.addDice(1, 500, false);
+        roller.addDice(-1, 1000);
+        roller.addDice(1, 500);
         Assert.assertEquals(roller.getMinimumRoll(), -500);
     }
 
     @Test
     public void testGetMaximumRoll_withOnlyPositiveDice() {
-        roller.addDice(2, 1000, false);
+        roller.addDice(2, 1000);
         Assert.assertEquals(roller.getMaximumRoll(), 2000);
     }
 
     @Test
     public void testGetMaximumRoll_withOnlyNegativeDice() {
-        roller.addDice(2, 1000, true);
+        roller.addDice(-2, 1000);
         Assert.assertEquals(roller.getMaximumRoll(), -2000);
     }
 
     @Test
     public void testGetMaximumRoll_withMixedDice() {
-        roller.addDice(2, 1000, true);
-        roller.addDice(1, 500, false);
+        roller.addDice(-2, 1000);
+        roller.addDice(1, 500);
         Assert.assertEquals(roller.getMaximumRoll(), -1500);
     }
 }
