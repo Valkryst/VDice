@@ -23,6 +23,7 @@ public class DiceRoller {
     public int roll() {
         if (rollsSinceLastReseed >= 100_000) {
             random.setSeed(System.currentTimeMillis());
+            rollsSinceLastReseed = 0;
         }
 
         int total = 0;
