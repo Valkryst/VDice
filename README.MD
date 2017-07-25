@@ -16,6 +16,12 @@ A library to generate pseudorandom dice rolls.
 
 Supports any combination of dice as well as both negative and positive roll results.
 
+## Jar Files & Maven
+
+To use this project as a Maven dependency, click on the JitPack badge [![Release](https://jitpack.io/v/Valkryst/VDice.svg)](https://jitpack.io/#Valkryst/VDice), select a version, click the "Get it!" button, and then follow the instructions.
+
+If you would rather use a Jar file, then you can find the Jars on the [releases](https://github.com/Valkryst/VDice/releases) page.
+
 ## Examples
 Add a 1d6 and a 1d20 to a roller, then roll the dice and output the result.
 
