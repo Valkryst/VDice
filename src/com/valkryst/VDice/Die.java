@@ -5,7 +5,7 @@ import lombok.Getter;
 import java.util.Random;
 
 public class Die {
-    /** The number of sides on the die. */
+    /** The number of sides on the die. This value is always positive. */
     @Getter private final int sides;
 
     /** Whether or not the result of the die is negative. */
