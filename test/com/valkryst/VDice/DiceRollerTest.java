@@ -52,10 +52,22 @@ public class DiceRollerTest {
     }
 
     @Test
-    public void testAddDie_oneParam() {
+    public void testAddDie_intParam() {
         final int sides = ThreadLocalRandom.current().nextInt(Integer.MAX_VALUE);
         roller.addDie(sides);
         Assert.assertEquals(roller.getMinimumRoll(), 1);
+    }
+
+    @Test
+    public void testAddDie_objectParam_withValidInput() {
+        final Die die = new Die(6);
+        roller.addDie(die);
+        Assert.assertEquals(roller.getMinimumRoll(), 1);
+    }
+
+    @Test(expected=NullPointerException.class)
+    public void testAddDie_objectParam_withNullDie() {
+        roller.addDie(null);
     }
 
     @Test
@@ -77,6 +89,37 @@ public class DiceRollerTest {
         final int sides = ThreadLocalRandom.current().nextInt(Integer.MAX_VALUE);
         roller.addDice(sides, 1000);
         Assert.assertEquals(roller.getMinimumRoll(), 1000);
+    }
+
+    @Test
+    public void testRemoveDie_withValidInput_withOneInstanceInList() {
+        final Die die = new Die(6);
+
+        roller.addDie(die);
+        Assert.assertEquals(roller.getMinimumRoll(), 1);
+
+        roller.removeDie(die);
+        Assert.assertEquals(roller.getMinimumRoll(), 0);
+    }
+
+    @Test
+    public void testRemoveDie_withValidInput_withTwoInstancesInList() {
+        final Die die = new Die(6);
+
+        roller.addDie(die);
+        roller.addDie(die);
+        Assert.assertEquals(roller.getMinimumRoll(), 2);
+
+        roller.removeDie(die);
+        Assert.assertEquals(roller.getMinimumRoll(), 1);
+
+        roller.removeDie(die);
+        Assert.assertEquals(roller.getMinimumRoll(), 0);
+    }
+
+    @Test(expected=NullPointerException.class)
+    public void testRemoveDie_withNullDie() {
+        roller.removeDie(null);
     }
 
     @Test
