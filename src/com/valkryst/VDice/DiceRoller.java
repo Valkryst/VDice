@@ -67,7 +67,12 @@ public class DiceRoller {
         }
     }
 
-    /** @return The minimum possible roll. */
+    /**
+     * Determines the minimum possible roll.
+     *
+     * @return
+     *        The minimum possible roll.
+     */
     public int getMinimumRoll() {
         int total = 0;
 
@@ -82,7 +87,12 @@ public class DiceRoller {
         return total;
     }
 
-    /** @return The maximum possible roll. */
+    /**
+     * Determines the maximum possible roll.
+     *
+     * @return
+     *        The maximum possible roll.
+     */
     public int getMaximumRoll() {
         int total = 0;
 
