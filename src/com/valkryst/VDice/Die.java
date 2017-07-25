@@ -18,8 +18,8 @@ public class Die {
      *        The number of sides on the die.
      */
     public Die(final int sides) {
-        this.sides = sides;
         isNegative = sides < 0;
+        this.sides = isNegative ? -sides : sides;
     }
 
     /**
