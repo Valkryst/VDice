@@ -28,7 +28,7 @@ public class DieTest {
         final Die die = new Die(sides);
 
         Assert.assertEquals(-sides, die.getSides());
-        Assert.assertFalse(die.isNegative());
+        Assert.assertTrue(die.isNegative());
     }
 
     @Test
