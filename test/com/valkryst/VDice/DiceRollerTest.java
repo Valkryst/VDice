@@ -15,6 +15,13 @@ public class DiceRollerTest {
     }
 
     @Test
+    public void testRoll_forceReseed() {
+        for (int i = 0 ; i < 100_000 ; i++) {
+            roller.roll();
+        }
+    }
+
+    @Test
     public void testRoll_withNoDice() {
         Assert.assertEquals(0, roller.roll());
     }
