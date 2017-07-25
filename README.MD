@@ -10,6 +10,12 @@ Please refer to the LICENSE file for additional information.
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/935164ad165841f9871665cde7975eaf)](https://www.codacy.com/app/Valkryst/VDice?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Valkryst/VDice&amp;utm_campaign=Badge_Grade)
 
+# VDice
+
+A library to generate pseudorandom dice rolls.
+
+Supports any combination of dice as well as both negative and positive roll results.
+
 ## Examples
 Add a 1d6 and a 1d20 to a roller, then roll the dice and output the result.
 
