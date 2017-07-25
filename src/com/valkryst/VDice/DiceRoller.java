@@ -47,20 +47,7 @@ public class DiceRoller {
      *        The number of sides on the die to add.
      */
     public void addDie(final int sides) {
-        addDie(sides, false);
-    }
-
-    /**
-     * Adds a die to the roller.
-     *
-     * @param sides
-     *        The number of sides on the die to add.
-     *
-     * @param isNegative
-     *        Whether or not the result of the die is negative.
-     */
-    public void addDie(final int sides, final boolean isNegative) {
-        dice.add(new Die(sides, isNegative));
+        dice.add(new Die(sides));
     }
 
     /**
@@ -73,24 +60,8 @@ public class DiceRoller {
      *        The number of dice to add.
      */
     public void addDice(final int sides, int totalDice) {
-        addDice(sides, totalDice, false);
-    }
-
-    /**
-     * Adds one or more dice to the roller.
-     *
-     * @param sides
-     *        The number of sides on the dice to add.
-     *
-     * @param totalDice
-     *        The number of dice to add.
-     *
-     * @param areNegative
-     *        Whether or not the results of the dice are negative.
-     */
-    public void addDice(final int sides, int totalDice, final boolean areNegative) {
         while (totalDice > 0) {
-            addDie(sides, areNegative);
+            addDie(sides);
             totalDice--;
         }
     }
