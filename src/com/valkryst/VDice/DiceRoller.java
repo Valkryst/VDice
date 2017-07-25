@@ -52,6 +52,16 @@ public class DiceRoller {
     }
 
     /**
+     * Adds a die to the roller.
+     *
+     * @param die
+     *        The die.
+     */
+    public void addDie(final Die die) {
+        dice.add(die);
+    }
+
+    /**
      * Adds one or more positive-valued dice to the roller.
      *
      * @param sides
@@ -65,6 +75,16 @@ public class DiceRoller {
             addDie(sides);
             totalDice--;
         }
+    }
+
+    /**
+     * Removes the first occurrence of a die from the roller.
+     *
+     * @param die
+     *        The die.
+     */
+    public void removeDie(final Die die) {
+        dice.remove(die);
     }
 
     /**
