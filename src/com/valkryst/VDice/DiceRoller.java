@@ -3,6 +3,7 @@ package com.valkryst.VDice;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 public class DiceRoller {
@@ -56,8 +57,12 @@ public class DiceRoller {
      *
      * @param die
      *        The die.
+     *
+     * @throws NullPointerException
+     *        If the die is null.
      */
     public void addDie(final Die die) {
+        Objects.requireNonNull(die);
         dice.add(die);
     }
 
@@ -82,8 +87,12 @@ public class DiceRoller {
      *
      * @param die
      *        The die.
+     *
+     * @throws NullPointerException
+     *        If the die is null.
      */
     public void removeDie(final Die die) {
+        Objects.requireNonNull(die);
         dice.remove(die);
     }
 
