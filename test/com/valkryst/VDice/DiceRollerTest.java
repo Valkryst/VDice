@@ -16,7 +16,7 @@ public class DiceRollerTest {
 
     @Test
     public void testRoll_forceReseed() {
-        for (int i = 0 ; i < 100_000 ; i++) {
+        for (int i = 0 ; i < 200_000 ; i++) {
             roller.roll();
         }
     }
