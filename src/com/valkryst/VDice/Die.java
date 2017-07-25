@@ -16,17 +16,10 @@ public class Die {
      *
      * @param sides
      *        The number of sides on the die.
-     *
-     * @param isNegative
-     *        Whether or not the result of the die is negative.
      */
-    public Die(final int sides, final boolean isNegative) {
+    public Die(final int sides) {
         this.sides = sides;
-        this.isNegative = isNegative;
-
-        if (sides < 1) {
-            throw new IllegalArgumentException("A die requires at-least one side.");
-        }
+        isNegative = sides < 0;
     }
 
     /**
