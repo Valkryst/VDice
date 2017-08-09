@@ -36,7 +36,7 @@ public class DieTest {
         final Die die = new Die(6);
 
         for (int i = 0 ; i < 1000 ; i++) {
-            final int result = die.roll(ThreadLocalRandom.current());
+            final int result = die.roll();
 
             Assert.assertTrue(result >= 1);
             Assert.assertTrue(result <= 6);
@@ -45,6 +45,30 @@ public class DieTest {
 
     @Test
     public void testRoll_withNegativeDie() {
+        final Die die = new Die(-6);
+
+        for (int i = 0 ; i < 1000 ; i++) {
+            final int result = die.roll();
+
+            Assert.assertTrue(result <= -1);
+            Assert.assertTrue(result >= -6);
+        }
+    }
+
+    @Test
+    public void testRoll_oneParam_withPositiveDie() {
+        final Die die = new Die(6);
+
+        for (int i = 0 ; i < 1000 ; i++) {
+            final int result = die.roll(ThreadLocalRandom.current());
+
+            Assert.assertTrue(result >= 1);
+            Assert.assertTrue(result <= 6);
+        }
+    }
+
+    @Test
+    public void testRoll_oneParam_withNegativeDie() {
         final Die die = new Die(-6);
 
         for (int i = 0 ; i < 1000 ; i++) {
