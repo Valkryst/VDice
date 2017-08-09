@@ -3,6 +3,7 @@ package com.valkryst.VDice;
 import lombok.Getter;
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Die {
     /** The number of sides on the die. This value is always positive. */
@@ -20,6 +21,16 @@ public class Die {
     public Die(final int sides) {
         isNegative = sides < 0;
         this.sides = isNegative ? -sides : sides;
+    }
+
+    /**
+     * Rolls the die.
+     *
+     * @return
+     *        The result.
+     */
+    public int roll() {
+        return roll(ThreadLocalRandom.current());
     }
 
     /**
