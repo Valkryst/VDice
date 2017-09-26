@@ -8,19 +8,38 @@ Please refer to the LICENSE file for additional information.
 
 [![MIT License](https://img.shields.io/badge/license-MIT_License-green.svg)](https://github.com/Valkryst/VDice/blob/master/LICENSE.md) ![](https://travis-ci.org/Valkryst/VDice.svg?branch=master) [![codecov](https://codecov.io/gh/Valkryst/VDice/branch/master/graph/badge.svg)](https://codecov.io/gh/Valkryst/VDice) [![Release](https://jitpack.io/v/Valkryst/VDice.svg)](https://jitpack.io/#Valkryst/VDice)
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/935164ad165841f9871665cde7975eaf)](https://www.codacy.com/app/Valkryst/VDice?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Valkryst/VDice&amp;utm_campaign=Badge_Grade)
-
 # VDice
 
 A library to generate pseudorandom dice rolls.
 
 Supports any combination of dice as well as both negative and positive roll results.
 
-## Jar Files & Maven
+# Jar Files & Maven
 
-To use this project as a Maven dependency, click on the JitPack badge [![Release](https://jitpack.io/v/Valkryst/VDice.svg)](https://jitpack.io/#Valkryst/VDice), select a version, click the "Get it!" button, and then follow the instructions.
+The Maven dependency is hosted off of JitPack, so you will need to add JitPack as a repository before you add VTerminal as a dependency.
 
-If you would rather use a Jar file, then you can find the Jars on the [releases](https://github.com/Valkryst/VDice/releases) page.
+### Maven
+
+JitPack ([Example](https://github.com/Valkryst/VTerminal/blob/master/pom.xml)):
+
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
+Dependency:
+
+    <dependency>
+        <groupId>com.github.Valkryst</groupId>
+        <artifactId>VDice</artifactId>
+        <version>1.0.3</version>
+    </dependency>
+
+### Jar
+
+Jar files can be found on the [releases](https://github.com/Valkryst/VDice/releases) page.
 
 ## Examples
 Add a 1d6 and a 1d20 to a roller, then roll the dice and output the result.
