@@ -1,9 +1,10 @@
 package com.valkryst.VDice;
 
+import lombok.NonNull;
+
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Random;
 
 public class DiceRoller {
@@ -61,8 +62,7 @@ public class DiceRoller {
      * @throws NullPointerException
      *        If the die is null.
      */
-    public void addDie(final Die die) {
-        Objects.requireNonNull(die);
+    public void addDie(final @NonNull Die die) {
         dice.add(die);
     }
 
@@ -91,8 +91,7 @@ public class DiceRoller {
      * @throws NullPointerException
      *        If the die is null.
      */
-    public void removeDie(final Die die) {
-        Objects.requireNonNull(die);
+    public void removeDie(final @NonNull Die die) {
         dice.remove(die);
     }
 
