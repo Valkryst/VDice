@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Random;
 
 public class DiceRoller {
-    private final static Random random = new SecureRandom();
+    private final static Random RANDOM = new SecureRandom();
 
     /** The dice. */
     private final List<Die> dice = new ArrayList<>();
@@ -24,14 +24,14 @@ public class DiceRoller {
      */
     public int roll() {
         if (rollsSinceLastReseed >= 100_000) {
-            random.setSeed(System.currentTimeMillis());
+            RANDOM.setSeed(System.currentTimeMillis());
             rollsSinceLastReseed = 0;
         }
 
         int total = 0;
 
         for (final Die die : dice) {
-            total += die.roll(random);
+            total += die.roll(RANDOM);
             rollsSinceLastReseed++;
         }
 
