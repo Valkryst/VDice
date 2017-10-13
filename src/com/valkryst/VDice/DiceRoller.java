@@ -9,8 +9,10 @@ import java.util.Random;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class DiceRoller {
+    /** The random instance to use when rolling. */
     private final static Random RANDOM = new SecureRandom();
-    private final static ReentrantReadWriteLock RANDOM_LOCK = new ReentrantReadWriteLock();
+    /** The lock that controls access to the rolls counter. */
+    private final static ReentrantReadWriteLock RESEED_LOCK = new ReentrantReadWriteLock();
     /** The number of die rolls since the last reseed of the random instance. */
     private static int ROLLS_SINCE_RESEED = 0;
 
@@ -24,18 +26,18 @@ public class DiceRoller {
      *        The summed result of all die rolls.
      */
     public int roll() {
-        RANDOM_LOCK.readLock().lock();
+        RESEED_LOCK.readLock().lock();
         if (ROLLS_SINCE_RESEED >= 100_000) {
-            RANDOM_LOCK.readLock().unlock();
+            RESEED_LOCK.readLock().unlock();
 
             RANDOM.setSeed(System.currentTimeMillis());
 
 
-            RANDOM_LOCK.writeLock().lock();
+            RESEED_LOCK.writeLock().lock();
             ROLLS_SINCE_RESEED = 0;
-            RANDOM_LOCK.writeLock().unlock();
+            RESEED_LOCK.writeLock().unlock();
         } else {
-            RANDOM_LOCK.readLock().unlock();
+            RESEED_LOCK.readLock().unlock();
         }
 
         int total = 0;
@@ -43,9 +45,9 @@ public class DiceRoller {
         for (final Die die : dice) {
             total += die.roll(RANDOM);
 
-            RANDOM_LOCK.writeLock().lock();
+            RESEED_LOCK.writeLock().lock();
             ROLLS_SINCE_RESEED++;
-            RANDOM_LOCK.writeLock().unlock();
+            RESEED_LOCK.writeLock().unlock();
         }
 
         return total;
