@@ -44,7 +44,7 @@ public class DiceRoller {
     }
 
     /**
-     * Adds a positive-valued die to the roller.
+     * Adds a die to the roller.
      *
      * @param sides
      *        The number of sides on the die to add.
@@ -67,7 +67,7 @@ public class DiceRoller {
     }
 
     /**
-     * Adds one or more positive-valued dice to the roller.
+     * Adds one or more dice to the roller.
      *
      * @param sides
      *        The number of sides on the dice to add.
