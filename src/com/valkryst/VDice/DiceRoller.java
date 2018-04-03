@@ -6,15 +6,18 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class DiceRoller {
+    /** The random instance to use when rolling. */
     private final static Random RANDOM = new SecureRandom();
+    /** The lock that controls access to the rolls counter. */
+    private final static ReentrantReadWriteLock RESEED_LOCK = new ReentrantReadWriteLock();
+    /** The number of die rolls since the last reseed of the random instance. */
+    private static int ROLLS_SINCE_RESEED = 0;
 
     /** The dice. */
     private final List<Die> dice = new ArrayList<>();
-
-    /** The number of die rolls since the last reseed of the random instance. */
-    private int rollsSinceLastReseed = 0;
 
     /**
      * Rolls each of the dice and sums the result.
@@ -23,16 +26,28 @@ public class DiceRoller {
      *        The summed result of all die rolls.
      */
     public int roll() {
-        if (rollsSinceLastReseed >= 100_000) {
+        RESEED_LOCK.readLock().lock();
+        if (ROLLS_SINCE_RESEED >= 100_000) {
+            RESEED_LOCK.readLock().unlock();
+
             RANDOM.setSeed(System.currentTimeMillis());
-            rollsSinceLastReseed = 0;
+
+
+            RESEED_LOCK.writeLock().lock();
+            ROLLS_SINCE_RESEED = 0;
+            RESEED_LOCK.writeLock().unlock();
+        } else {
+            RESEED_LOCK.readLock().unlock();
         }
 
         int total = 0;
 
         for (final Die die : dice) {
             total += die.roll(RANDOM);
-            rollsSinceLastReseed++;
+
+            RESEED_LOCK.writeLock().lock();
+            ROLLS_SINCE_RESEED++;
+            RESEED_LOCK.writeLock().unlock();
         }
 
         return total;
@@ -44,7 +59,7 @@ public class DiceRoller {
     }
 
     /**
-     * Adds a positive-valued die to the roller.
+     * Adds a die to the roller.
      *
      * @param sides
      *        The number of sides on the die to add.
@@ -67,7 +82,7 @@ public class DiceRoller {
     }
 
     /**
-     * Adds one or more positive-valued dice to the roller.
+     * Adds one or more dice to the roller.
      *
      * @param sides
      *        The number of sides on the dice to add.
