@@ -1,7 +1,5 @@
 package com.valkryst.VDice;
 
-import lombok.NonNull;
-
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +25,10 @@ public class DiceRoller {
      *        The summed result of all die rolls.
      */
     public int roll() {
+        if (dice.size() == 0) {
+            return 0;
+        }
+
         RESEED_LOCK.readLock().lock();
         if (ROLLS_SINCE_RESEED.get() >= 100_000) {
             RESEED_LOCK.readLock().unlock();
@@ -74,12 +76,11 @@ public class DiceRoller {
      *
      * @param die
      *        The die.
-     *
-     * @throws NullPointerException
-     *        If the die is null.
      */
-    public void addDie(final @NonNull Die die) {
-        dice.add(die);
+    public void addDie(final Die die) {
+        if (die != null) {
+            dice.add(die);
+        }
     }
 
     /**
@@ -103,12 +104,11 @@ public class DiceRoller {
      *
      * @param die
      *        The die.
-     *
-     * @throws NullPointerException
-     *        If the die is null.
      */
-    public void removeDie(final @NonNull Die die) {
-        dice.remove(die);
+    public void removeDie(final Die die) {
+        if (die != null) {
+            dice.remove(die);
+        }
     }
 
     /**
