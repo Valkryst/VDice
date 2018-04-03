@@ -1,7 +1,6 @@
 package com.valkryst.VDice;
 
 import lombok.Getter;
-import lombok.NonNull;
 
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
@@ -37,16 +36,20 @@ public class Die {
     /**
      * Rolls the die.
      *
+     * Uses the current ThreadLocalRandom if the specified random instance
+     * is null.
+     *
      * @param random
      *        The random instance to roll with.
      *
      * @return
      *        The result.
-     *
-     * @throws NullPointerException
-     *         If random is null.
      */
-    public int roll(final @NonNull Random random) {
+    public int roll(Random random) {
+        if (random == null) {
+            random = ThreadLocalRandom.current();
+        }
+
         int result = random.nextInt(sides) + 1;
         return (isNegative ? -result : result);
     }
