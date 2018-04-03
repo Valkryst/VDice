@@ -6,6 +6,7 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class DiceRoller {
@@ -14,7 +15,7 @@ public class DiceRoller {
     /** The lock that controls access to the rolls counter. */
     private final static ReentrantReadWriteLock RESEED_LOCK = new ReentrantReadWriteLock();
     /** The number of die rolls since the last reseed of the random instance. */
-    private static int ROLLS_SINCE_RESEED = 0;
+    private static AtomicInteger ROLLS_SINCE_RESEED = new AtomicInteger(0);
 
     /** The dice. */
     private final List<Die> dice = new ArrayList<>();
@@ -27,14 +28,14 @@ public class DiceRoller {
      */
     public int roll() {
         RESEED_LOCK.readLock().lock();
-        if (ROLLS_SINCE_RESEED >= 100_000) {
+        if (ROLLS_SINCE_RESEED.get() >= 100_000) {
             RESEED_LOCK.readLock().unlock();
 
             RANDOM.setSeed(System.currentTimeMillis());
 
 
             RESEED_LOCK.writeLock().lock();
-            ROLLS_SINCE_RESEED = 0;
+            ROLLS_SINCE_RESEED.set(0);
             RESEED_LOCK.writeLock().unlock();
         } else {
             RESEED_LOCK.readLock().unlock();
@@ -46,7 +47,7 @@ public class DiceRoller {
             total += die.roll(RANDOM);
 
             RESEED_LOCK.writeLock().lock();
-            ROLLS_SINCE_RESEED++;
+            ROLLS_SINCE_RESEED.getAndIncrement();
             RESEED_LOCK.writeLock().unlock();
         }
 
