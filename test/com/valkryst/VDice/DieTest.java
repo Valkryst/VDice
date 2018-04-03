@@ -79,9 +79,12 @@ public class DieTest {
         }
     }
 
-    @Test(expected=NullPointerException.class)
+    @Test
     public void testRoll_withNullRandom() {
         final Die die = new Die(6);
-        die.roll(null);
+        final int result = die.roll(null);
+
+        Assert.assertTrue(result >= 1);
+        Assert.assertTrue(result <= 6);
     }
 }

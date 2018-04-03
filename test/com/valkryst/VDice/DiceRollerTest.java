@@ -65,7 +65,7 @@ public class DiceRollerTest {
         Assert.assertEquals(roller.getMinimumRoll(), 1);
     }
 
-    @Test(expected=NullPointerException.class)
+    @Test
     public void testAddDie_objectParam_withNullDie() {
         roller.addDie(null);
     }
@@ -117,7 +117,7 @@ public class DiceRollerTest {
         Assert.assertEquals(roller.getMinimumRoll(), 0);
     }
 
-    @Test(expected=NullPointerException.class)
+    @Test
     public void testRemoveDie_withNullDie() {
         roller.removeDie(null);
     }
