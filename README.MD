@@ -1,12 +1,4 @@
-#### License
-
-Use this code however you wish. Modifications and improvements are welcome.
-
-Please refer to the LICENSE file for additional information.
-
----
-
-[![MIT License](https://img.shields.io/badge/license-MIT_License-green.svg)](https://github.com/Valkryst/VDice/blob/master/LICENSE.md) ![](https://travis-ci.org/Valkryst/VDice.svg?branch=master) [![codecov](https://codecov.io/gh/Valkryst/VDice/branch/master/graph/badge.svg)](https://codecov.io/gh/Valkryst/VDice) [![Release](https://jitpack.io/v/Valkryst/VDice.svg)](https://jitpack.io/#Valkryst/VDice)
+![](https://travis-ci.org/Valkryst/VDice.svg?branch=master) [![codecov](https://codecov.io/gh/Valkryst/VDice/branch/master/graph/badge.svg)](https://codecov.io/gh/Valkryst/VDice) [![Release](https://jitpack.io/v/Valkryst/VDice.svg)](https://jitpack.io/#Valkryst/VDice)
 
 # VDice
 
