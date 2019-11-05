@@ -1,4 +1,5 @@
 ![](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiK0RwTG80S3pER1Y1d0J0T25aV2txeEM5djdVbUl1UmdtU3JWN0c0QUYvTHlFUW5yL2FSQXo2bVVvQnpVbjNoSlZDU2h1c1NkWnpVNHVQQkZjaFNiUHFRPSIsIml2UGFyYW1ldGVyU3BlYyI6ImY2WVhDeStnT2UyNlJLTmwiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master) [![codecov](https://codecov.io/gh/Valkryst/VDice/branch/master/graph/badge.svg)](https://codecov.io/gh/Valkryst/VDice) [![Release](https://jitpack.io/v/Valkryst/VDice.svg)](https://jitpack.io/#Valkryst/VDice)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/Valkryst/VDice.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Valkryst/VDice/alerts/) [![Language grade: Java](https://img.shields.io/lgtm/grade/java/g/Valkryst/VDice.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Valkryst/VDice/context:java)
 
 # VDice
 
